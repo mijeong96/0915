@@ -15,7 +15,7 @@
 
 /////////////////////////event binding
 
-
+/*
 $("#tab ul li a").on("click", function(e){
     e.preventDefault();
 
@@ -27,8 +27,8 @@ $("#tab ul li a").on("click", function(e){
     $("#tab ul li").eq(i).children("a").addClass("on");
 
 
-})
-
+});
+*/
 
 
 /*
@@ -38,7 +38,24 @@ $("#tab ul li a").on("click", function(e){
 4. 해당박스는 보이게 / 다른박스는 비활성화
 */
 
+const $tab = $("#tab");
+const $btns = $tab.find("ul li a")
+const $group = $tab.find(".group div")
 
 
+$("#tab ul li a").on("click", function(e){
+    e.preventDefault();
+
+    let target = $(this).attr("href");
+    activation(target,$(this));
+});
+
+function activation (target, el){
+    $group.hide();
+    $(target).show();
+
+    $btns.removeClass("on");
+    el.addClass("on");
 
 
+}
